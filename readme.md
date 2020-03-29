@@ -1,6 +1,6 @@
 # ansible-docker-webserver
 
-This ansible setup prepares a fresh ubuntu server for use as a webserver with docker.
+This ansible setup prepares a fresh Ubuntu server for use as a webserver with docker.
 
 - It hardens the server (ssh settings and firewall).
 - It adds an 'ansible' user for later use.
