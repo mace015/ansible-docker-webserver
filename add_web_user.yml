@@ -1,0 +1,11 @@
+---
+- hosts: all
+  remote_user: ansible
+  tasks:
+  - name: Create the 'web' user.
+    become: yes
+    user:
+      name: web
+      shell: /bin/bash
+      groups: sudo,docker
+      append: yes

@@ -1,0 +1,22 @@
+---
+- hosts: all
+  remote_user: root
+  tasks:
+    - name: Create the 'ansible' user.
+      user:
+        name: ansible
+        shell: /bin/bash
+        groups: sudo
+        append: yes
+    - name: Set authorized key for the 'ansible' user.
+      authorized_key:
+        user: ansible
+        state: present
+        key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+    - name: Enable passwordless sudo for the 'ansible' user.
+      copy:
+        content: "%ansible ALL=(ALL) NOPASSWD:ALL"
+        dest: /etc/sudoers.d/ansible
+        owner: root
+        group: root
+        mode: 0440

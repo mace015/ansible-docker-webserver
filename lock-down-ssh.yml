@@ -1,0 +1,24 @@
+---
+- hosts: all
+  remote_user: root
+  tasks:
+  - name: Remove root (extra PermitRootLogin ??) SSH access
+    become: yes
+    lineinfile:
+      dest: /etc/ssh/sshd_config
+      regexp: "PermitRootLogin"
+      state: absent
+  - name: Remove root SSH access
+    become: yes
+    lineinfile:
+      dest: /etc/ssh/sshd_config
+      regexp: ".PermitRootLogin"
+      line: "PermitRootLogin no"
+      state: present
+  - name: Remove password SSH access
+    become: yes
+    lineinfile:
+      dest: /etc/ssh/sshd_config
+      regexp: ".PasswordAuthentication"
+      line: "PasswordAuthentication no"
+      state: present
