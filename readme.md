@@ -8,7 +8,7 @@ This ansible setup prepares a fresh Ubuntu server for use as a webserver with do
 - It installs docker and docker-compose.
 - It reboots the machine
 
-## usage
+## Usage
 
 To use this setup run the following command:
 
