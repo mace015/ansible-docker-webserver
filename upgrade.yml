@@ -1,0 +1,8 @@
+---
+- hosts: all
+  remote_user: root
+  tasks:
+    - name: Upgrade all OS packages
+      apt:
+        name: "*"
+        state: latest
