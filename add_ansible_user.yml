@@ -2,9 +2,13 @@
 - hosts: all
   remote_user: root
   tasks:
+    - name: Create a password for the 'ansible' user.
+      set_fact:
+        ansible_password: "{{ lookup('password', '/dev/null length=15 chars=ascii_letters') }}"
     - name: Create the 'ansible' user.
       user:
         name: ansible
+        password: "{{ ansible_password | password_hash('sha512') }}"
         shell: /bin/bash
         groups: sudo
         append: yes
@@ -12,11 +16,7 @@
       authorized_key:
         user: ansible
         state: present
-        key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
-    - name: Enable passwordless sudo for the 'ansible' user.
-      copy:
-        content: "%ansible ALL=(ALL) NOPASSWD:ALL"
-        dest: /etc/sudoers.d/ansible
-        owner: root
-        group: root
-        mode: 0440
+        key: "{{ lookup('file', '/home/mace/.ssh/id_rsa.pub') }}"
+    - name: Print the password for the user 'ansible'.
+      debug:
+        msg: "The password for 'ansible' is {{ ansible_password }}"
