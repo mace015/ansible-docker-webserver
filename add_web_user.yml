@@ -1,9 +1,8 @@
 ---
 - hosts: all
-  remote_user: ansible
+  remote_user: root
   tasks:
   - name: Create the 'web' user.
-    become: yes
     user:
       name: web
       shell: /bin/bash
