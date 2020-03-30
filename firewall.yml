@@ -16,8 +16,8 @@
       - name: Allow connections on port 80
         ufw:
           rule: allow
-          port: 80
+          port: "80"
       - name: Allow connections on port 443
         ufw:
           rule: allow
-          port: 443
+          port: "443"
