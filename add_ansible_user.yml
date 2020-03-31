@@ -12,11 +12,12 @@
         shell: /bin/bash
         groups: sudo
         append: yes
+        update_password: on_create
     - name: Set authorized key for the 'ansible' user.
       authorized_key:
         user: ansible
         state: present
-        key: "{{ lookup('file', '/home/mace/.ssh/id_rsa.pub') }}"
+        key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
     - name: Print the password for the user 'ansible'.
       debug:
         msg: "The password for 'ansible' is {{ ansible_password }}"
