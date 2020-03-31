@@ -1,7 +1,13 @@
 ---
 - hosts: all
-  remote_user: root
+  vars_prompt:
+    - name: ansible_password
+      prompt: "What is the password for the 'ansible' user?"
+  remote_user: ansible
+  become: yes
+  vars:
+    ansible_become_pass: "{{ ansible_password }}"
   tasks:
   - name: Reboot the machine
-    become: yes
     reboot:
+      msg: Ansible will now reboot the machine!
