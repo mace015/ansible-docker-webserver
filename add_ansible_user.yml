@@ -17,7 +17,7 @@
       authorized_key:
         user: ansible
         state: present
-        key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+        key: "{{ lookup('file', authorized_key) }}"
     - name: Print the password for the user 'ansible'.
       debug:
         msg: "The password for 'ansible' is {{ ansible_password }}"

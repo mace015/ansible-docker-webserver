@@ -13,5 +13,5 @@ This ansible setup prepares a fresh Ubuntu server for use as a webserver with do
 To use this setup run the following command:
 
 `
-ansible-playbook -i HOST, docker-webserver.yml --private-key ~/.ssh/PRIVATE-KEY
+ansible-playbook -i HOST, docker-webserver.yml --private-key ~/.ssh/PRIVATE-KEY --extra-vars "authorized_key=~/.ssh/id_rsa.pub"
 `
