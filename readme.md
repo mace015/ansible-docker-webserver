@@ -5,7 +5,7 @@ This ansible setup prepares a fresh Ubuntu server for use as a webserver with do
 - It hardens the server (ssh settings and firewall).
 - It adds an 'ansible' (with sudo) user for later use with a random password, please write down this password (provided during playbook execution).
 - It adds a user (without sudo but in the docker group) for later use (by default this user is called 'web' but this name can be overwritten by passing the `user` variable in the --extra-vars).
-- It installs docker and docker-compose.
+- It installs docker, docker-compose, htop, git and restic.
 - It reboots the machine.
 
 ## Usage
