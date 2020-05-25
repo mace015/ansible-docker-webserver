@@ -2,9 +2,9 @@
 - hosts: all
   remote_user: root
   tasks:
-  - name: Create the 'web' user.
+  - name: Create the desired user.
     user:
-      name: web
+      name: "{{ user | default('web') }}"
       shell: /bin/bash
       groups: sudo,docker
       append: yes
