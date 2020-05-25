@@ -6,5 +6,5 @@
     user:
       name: "{{ user | default('web') }}"
       shell: /bin/bash
-      groups: sudo,docker
+      groups: docker
       append: yes
